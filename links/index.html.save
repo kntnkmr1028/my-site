@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Kntnkmr</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>動的ページなんか無理なんでこれにリンクをまとめてそれを各ページに貼っつけることにします</h1>
+<h2>自サイトリンク一覧</h2>
+<a href="https://kntnkmr.f5.si">home</a>
+<p />
+<a href="https://kntnkmr.f5.si/specs/">pcとかのスペックとか</a>
+<p />
+<a href="https://kntnkmr.f5.si/mania-radio">ネタ()</a>
+
+<h2>相互リンク(一部)</h2>
+<p>@lunar
+<a href="https://9a.si/"><img src="https://9a.si/9a.si.webp" decoding="async" loading="lazy" width="500" height="150"</a>
+
+<p>@driplase</a>
+<a href="https://lase.dev"><img src="https://lase.dev/assets/lase_dev_header.webp" decoding="async" loading="lazy" width="500" height="150"/></a>
+
+<p>@spacer4719</p>
+<a href="https://spacer4719.f5.si"><img src="https://spacer4719.f5.si/images/NSH.png" decoding="async" loading="lazy" width="500" height="150"/></a>
+
+<p>@kuroge</p>
+<a href="https://kurogehome.f5.si/">kurogehome.f5.si</a>
+</body>
+</html>

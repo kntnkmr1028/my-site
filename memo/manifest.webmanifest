@@ -1,0 +1,9 @@
+{
+  "name": "Simple Memo",
+  "short_name": "Memo",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#121212",
+  "icons": []
+}

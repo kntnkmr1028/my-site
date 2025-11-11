@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Memo</title>
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    color: var(--fg);
+  }
+  :root {
+    --bg: #ffffff;
+    --fg: #000000;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121212;
+      --fg: #e0e0e0;
+    }
+  }
+  #editor {
+    width: 100%;
+    flex: 1;
+    border: none;
+    font-size: 16px;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: none;
+    outline: none;
+    background: var(--bg);
+    color: var(--fg);
+  }
+  #toolbar {
+    padding: 8px;
+    background: var(--bg);
+    display: flex;
+    gap: 6px;
+    border-bottom: 1px solid #8884;
+  }
+</style>
+</head>
+<body>
+
+<div id="toolbar">
+  <input type="text" id="filename" value="memo.txt" style="flex:1; padding:4px;">
+  <button id="saveBtn">保存</button>
+</div>
+
+<textarea id="editor" placeholder="ここにメモを書けます"></textarea>
+
+<script>
+// Load saved content
+const editor = document.getElementById("editor");
+editor.value = localStorage.getItem("memoContent") || "";
+
+// Auto-save
+editor.addEventListener("input", () => {
+  localStorage.setItem("memoContent", editor.value);
+});
+
+// Save as txt
+function saveFile() {
+  const text = editor.value;
+  const filename = document.getElementById("filename").value || "memo.txt";
+  const blob = new Blob([text], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+document.getElementById("saveBtn").addEventListener("click", saveFile);
+
+// Ctrl+S override
+document.addEventListener("keydown", (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === "s") {
+    e.preventDefault();
+    saveFile();
+  }
+});
+
+// Register Service Worker
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
+
+</body>
+</html>
